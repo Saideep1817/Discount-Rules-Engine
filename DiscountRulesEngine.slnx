@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="DiscountRulesEngine.Tests/DiscountRulesEngine.Tests.csproj" />
+  <Project Path="DiscountRulesEngine/DiscountRulesEngine.csproj" />
+</Solution>
