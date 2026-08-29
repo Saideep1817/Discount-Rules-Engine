@@ -65,7 +65,7 @@ public class UnitTest1
     }
 
     [Fact]
-    public void DiscountCalculator_ShouldSupportAddingNewRule()
+    public void DiscountCalculator_ShouldSupportAddingNewRule() // used to test adding a rule .
     {
         var rules = new List<IDiscountRule>
         {
