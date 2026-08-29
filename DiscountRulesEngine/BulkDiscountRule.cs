@@ -4,7 +4,7 @@
     {
         public decimal Apply(decimal subtotal)
         {
-            if (subtotal >= 2000m)
+            if (subtotal >= 1500m)
             {
                 return subtotal - 200m; // Apply a 200 discount
             }

@@ -25,7 +25,7 @@ public class UnitTest1
     }
 
     [Fact]
-    public void BulkDiscount_ShouldSubtract200_WhenSubtotalIs2000OrMore()
+    public void BulkDiscount_ShouldSubtract200_WhenSubtotalIs1500OrMore()
     {
         var rule = new BulkDiscountRule();
 
@@ -34,6 +34,16 @@ public class UnitTest1
         Assert.Equal(1800m, result);
     }
 
+    [Fact]
+
+    public void BulkDiscount_ShouldNotSubtract200_WhenSubtotalIsLessThan1500()
+    {
+        var rule = new BulkDiscountRule();
+
+        var result = rule.Apply(1200m);
+
+        Assert.Equal(1200m, result);
+    }
     [Fact]
     public void FestivalDiscount_ShouldApply10Percent_WhenSubtotalIs500OrMore()
     {
