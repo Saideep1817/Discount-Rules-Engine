@@ -5,7 +5,7 @@ namespace DiscountRulesEngine.Tests;
 public class UnitTest1
 {
     [Fact]
-    public void PremiumDiscount_ShouldApply15Percent_WhenSubtotalIs2000OrMore()
+    public void PremiumDiscount_ShouldApply15Percent_WhenSubtotalIs2000OrMore() // checking +ve response from premiumdiscountrule
     {
         var rule = new PremiumDiscountRule();
 
@@ -15,7 +15,7 @@ public class UnitTest1
     }
 
     [Fact]
-    public void PremiumDiscount_ShouldNotApply_WhenSubtotalIsLessThan2000()
+    public void PremiumDiscount_ShouldNotApply_WhenSubtotalIsLessThan2000() // checking -ve response from premiumdiscountrule 
     {
         var rule = new PremiumDiscountRule();
 
@@ -25,7 +25,7 @@ public class UnitTest1
     }
 
     [Fact]
-    public void BulkDiscount_ShouldSubtract200_WhenSubtotalIs1500OrMore()
+    public void BulkDiscount_ShouldSubtract200_WhenSubtotalIs1500OrMore() // checking +ve response from bulkdiscountrule
     {
         var rule = new BulkDiscountRule();
 
@@ -36,7 +36,7 @@ public class UnitTest1
 
     [Fact]
 
-    public void BulkDiscount_ShouldNotSubtract200_WhenSubtotalIsLessThan1500()
+    public void BulkDiscount_ShouldNotSubtract200_WhenSubtotalIsLessThan1500() // checking -ve response from bulkdiscountrule
     {
         var rule = new BulkDiscountRule();
 
@@ -45,7 +45,7 @@ public class UnitTest1
         Assert.Equal(1200m, result);
     }
     [Fact]
-    public void FestivalDiscount_ShouldApply10Percent_WhenSubtotalIs500OrMore()
+    public void FestivalDiscount_ShouldApply10Percent_WhenSubtotalIs500OrMore() // checking +ve response from festivaldiscountrule
     {
         var rule = new FestivalDiscountRule();
 
@@ -55,7 +55,7 @@ public class UnitTest1
     }
 
     [Fact]
-    public void FestivalDiscount_ShouldNotApply_WhenSubtotalIsLessThan500()
+    public void FestivalDiscount_ShouldNotApply_WhenSubtotalIsLessThan500() // checking -ve response from festivaldiscountrule
     {
         var rule = new FestivalDiscountRule();
 
@@ -63,4 +63,20 @@ public class UnitTest1
 
         Assert.Equal(400m, result);
     }
+
+    [Fact]
+    public void DiscountCalculator_ShouldSupportAddingNewRule()
+    {
+        var rules = new List<IDiscountRule>
+        {
+        new StudentDiscountRule()
+        };
+
+        var calculator = new DiscountCalculator(rules);
+
+        var result = calculator.Calculate(1000m);
+
+        Assert.Equal(900m, result);
+    }
+
 }
